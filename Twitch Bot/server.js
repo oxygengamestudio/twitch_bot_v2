@@ -30,6 +30,8 @@ client.on('message', async (channel, context, message) => {
     const isNotBot = context.username.toLowerCase() !== process.env.TWITCH_BOT_USERNAME.toLowerCase();
   
     if ( !isNotBot ) return;
+
+	if ( !commands) return;
   
     const [raw, command, argument] = message.match(regexpCommand);
   
