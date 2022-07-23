@@ -19,7 +19,7 @@ const client = new tmi.Client({
         username: `${process.env.TWITCH_BOT_USERNAME}`,
         password: `oauth:${process.env.TWITCH_OAUTH_TOKEN}`
     },
-    channels: ['cooxybot']
+    channels: ['mastersnakou']
 });
 
 // Connect to the channel specified using the setings found in the configurations
