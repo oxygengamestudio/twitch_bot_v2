@@ -19,7 +19,7 @@ const client = new tmi.Client({
         username: `${process.env.TWITCH_BOT_USERNAME}`,
         password: `oauth:${process.env.TWITCH_OAUTH_TOKEN}`
     },
-    channels: ['mastersnakou']
+    channels: ['cooxybot']
 });
 
 // Connect to the channel specified using the setings found in the configurations
@@ -29,6 +29,7 @@ client.connect().catch(console.error);
 
 global.masterlove = null; // lets store last called time (milliseconds)
 global.masterlul = null
+global.masterrs = null
 
 client.on("message", (channel, tags, message, self) => {
   if (self) return;
@@ -55,6 +56,19 @@ client.on("message", (channel, tags, message, self) => {
     }
   }
 
+  if (message.indexOf("masterRS") !== -1) {
+    const nowMs = Date.now();
+    if (
+      !global.masterrs ||
+      nowMs - global.masterrs >= 180 * 1000 // 100 seconds for example
+    ) {
+      global.masterrs = nowMs;
+      client.say(channel, `masterRS masterRS masterRS masterRS masterRS masterRS`);
+    }
+  }
+
+
+   
 
 
 
